@@ -1,9 +1,11 @@
 #include <stdio.h>
 
 int main() {
-    char linha[10]= {'A','B','C','D','E','F','G','H','I','J'};
+    char colunas[10]= {'A','B','C','D','E','F','G','H','I','J'};
+
     //Tabuleiro 10x10
     int tabuleiro[10][10];
+
     //Inicializando o tabuleiro com 0
         for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
@@ -11,30 +13,45 @@ int main() {
             }
         }
 
-        // Posicionando navio horizontal, começando em (linha 2, coluna 4)
-        int linhaH = 2, colunaH = 4;
+        //Navio horizontal
+        int linhaH = 4, colunaH = 2;
         for(int k=0; k<3; k++) {
             tabuleiro[linhaH][colunaH + k] = 3;
         }
 
-        // Posicionando navio vertical, começando em (linha 6, coluna 7)
+        //Navio vertical
         int linhaV = 6, colunaV = 7;
         for(int k=0; k<3; k++) {
             tabuleiro[linhaV + k][colunaV] = 3;
         }
 
-    //Exibindo o tabuleiro com letras e números
-    printf("**** TABULEIRO BATALHA NAVAL ****\n\n");
-    printf("   "); // Espaço para alinhar os números das colunas
+        //Navio diagonal1
+        int linhaD1 = 0, colunaD1 = 0;
+        for (int k = 0; k < 3; k++) {
+            tabuleiro[linhaD1 + k][colunaD1 + k] = 3;
+        }
 
+        //Navio diagonal2
+        int linhaD2 = 7, colunaD2 = 1;
+        for (int k = 0; k < 3; k++) {
+            tabuleiro[linhaD2 + k][colunaD2 + k] = 3;
+        }
+
+    //Exibindo o tabuleiro
+    printf("**** TABULEIRO BATALHA NAVAL ****\n\n");
+    printf("   "); //Espaço para alinhar as letras das colunas
+
+    //Cabeçalho
     for(int j=0; j<10; j++) {
-        printf("%2d ", j+1); // Números das colunas
+        printf(" %c ", colunas[j]);
     }
     printf("\n");
+
+    //Linhas
     for(int i=0; i<10; i++){
-        printf("%c  ", linha[i]); // Letra da linha
+        printf("%2d ", i+1);
         for(int j=0; j<10; j++){
-            printf("%2d ", tabuleiro[i][j]);
+            printf(" %d ", tabuleiro[i][j]);
         }
         printf("\n");
     }
